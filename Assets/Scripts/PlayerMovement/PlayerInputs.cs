@@ -1,24 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputs : MonoBehaviour
-{
-    public Input input;
-
-    private void Awake()
+    public class PlayerInputs : MonoBehaviour
     {
-        input = new Input();
+        public InputActions input;
+
+        private void Awake()
+        {
+            input = new InputActions();
+        }
+
+        private void OnEnable()
+        {
+            input.Enable();
+        }
+
+        private void OnDisable()
+        {
+            input.Disable();
+        }
     }
 
-    private void OnEnable()
-    {
-        input.Enable();
-    }
-
-    private void OnDisable()
-    {
-        input.Disable();
-    }
-}

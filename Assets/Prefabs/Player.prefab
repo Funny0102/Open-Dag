@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bed7cc97dc981241888dfb03ee4c95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpHeight: 20000
+  speed: 10
+  jumpHeight: 15000
   bullet: {fileID: 3570232328826111951, guid: b4829b39cb1e3a14dadc6e121ed96362, type: 3}
   bulletSpeed: 20
