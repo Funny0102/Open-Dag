@@ -12,6 +12,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663923738806</updated>
       <workItem from="1663923744540" duration="3059000" />
-      <workItem from="1663926880452" duration="1025000" />
+      <workItem from="1663926880452" duration="7212000" />
     </task>
     <servers />
   </component>

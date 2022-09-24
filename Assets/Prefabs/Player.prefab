@@ -29,12 +29,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939742562490447723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.94, y: -0.8876, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: -4.18, y: -0.22, z: 0}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1939742562490447720
 SpriteRenderer:
@@ -149,7 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bed7cc97dc981241888dfb03ee4c95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxFall: -50
   speed: 10
+  cayoteTime: 2
   jumpHeight: 15000
+  pushDown: 10
   bullet: {fileID: 3570232328826111951, guid: b4829b39cb1e3a14dadc6e121ed96362, type: 3}
   bulletSpeed: 20
+  shootCD: 0.1
