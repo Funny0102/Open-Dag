@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputs _playerInputs;
     private Rigidbody2D _rigidbody2D;
     private CapsuleCollider2D _capsuleCollider2D;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private Vector2 _aim;
     private bool _isGrounded;
@@ -41,23 +43,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        _animator = gameObject.GetComponent<Animator>();
         _capsuleCollider2D = gameObject.GetComponent<CapsuleCollider2D>();
         _playerInputs = gameObject.GetComponent<PlayerInputs>();
         _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-        _aim = Vector2.right;
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            _aim = Vector2.right;
         _currentShootCD = 0;
     }
 
     private void Update()
     {
+        if (_playerInputs.input.Player.Move.ReadValue<float>() >= 0.1f)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (_playerInputs.input.Player.Move.ReadValue<float>() <= -0.1f)
+        {
+            _spriteRenderer.flipX = true;
+        }
+        
         _isGrounded = Physics2D.BoxCast(_capsuleCollider2D.bounds.center, _capsuleCollider2D.bounds.size, 0f,
             Vector2.down, 0.1f, 64);
-
-        if (_playerInputs.input.Player.Jump.WasPerformedThisFrame() && (_isGrounded || _currentCt < cayoteTime))
-        {
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
-            _rigidbody2D.AddForce(Vector2.up * jumpHeight);
-        }
+        
         
         _rigidbody2D.velocity = new Vector2(_playerInputs.input.Player.Move.ReadValue<float>() * speed, _rigidbody2D.velocity.y);
 
@@ -74,6 +82,25 @@ public class PlayerMovement : MonoBehaviour
         if (_rigidbody2D.position.y < maxFall)
         {
             Death();
+        }
+
+        if (_isGrounded && _playerInputs.input.Player.Move.ReadValue<float>() == 0)
+        {
+            _animator.Play("Idle");
+        }
+        else if (_isGrounded && _playerInputs.input.Player.Move.ReadValue<float>() != 0)
+        {
+             _animator.Play("Walk");
+        }
+        else if(!_isGrounded)
+        {
+            _animator.Play("Jump");
+        }
+        
+        if (_playerInputs.input.Player.Jump.WasPerformedThisFrame() && (_isGrounded || _currentCt < cayoteTime))
+        {
+            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
+            _rigidbody2D.AddForce(Vector2.up * jumpHeight);
         }
     }
 
